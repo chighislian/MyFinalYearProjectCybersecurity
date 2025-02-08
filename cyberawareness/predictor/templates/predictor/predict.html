@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cybersecurity Awareness - Predict</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        header {
+            background-color: #006400;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+        header a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 18px;
+        }
+        header a:hover {
+            text-decoration: underline;
+        }
+        main {
+            padding: 20px;
+        }
+        h1 {
+            color: #006400;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        form div {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #006400;
+        }
+        select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            font-size: 18px;
+            color: #fff;
+            background-color: #006400;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #004d00;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="{% url 'home' %}">Home</a>
+    </header>
+    <main>
+        <h1> AssesSing Cybersecurity Awareness Level</h1>
+        <form action="{% url 'predict' %}"  method="POST">
+            {% csrf_token %}
+            <!-- Question 1 -->
+
+
+            <div>
+                <label for="q1">1. How familiar are you with  the term  'Cybersecurity'?</label>
+                <select id="q1" name="q1" required>
+                    <option value="">Select an answer</option>
+                    <option value="Very familiar">Very familiar</option>
+                    <option value="Somewhat familiar">Somewhat familiar</option>
+                    <option value="Not familiar">Not familiar</option>
+                </select>
+            </div>
+
+
+            <!-- Question 2 -->
+            <div>
+                <label for="q2">2. Which of the following best describes your understanding of Phishing?</label>
+                <select id="q2" name="q2" required>
+                    <option value="">Select an answer</option>
+                    <option value="I have never heard of it">I have never heard of it</option>
+                    <option value="I have heard of it but don't know what it is">I have heard of it but don't know what it is</option>
+                    <option value="I know what it is and I can identify phishing attempts">I know what it is and I can identify phishing attempts</option>
+                    <option value="I know what it is but find it hard to identify phishing">I know what it is but find it hard to identify phishing</option>
+
+                </select>
+            </div>
+
+            <!-- Question 3 -->
+            <div>
+                <label for="q3">3. Do you know what a firewall is and how it works?</label>
+                <select id="q3" name="q3" required>
+                    <option value="">Select an answer</option>
+                    <option value="Yes, I know in detail">Yes, I know in detail</option>
+                    <option value="I have a basic understanding">I have a basic understanding</option>
+                    <option value="I have heard of it but don't know how it works">I have heard of it but don't know how it works</option>
+                    <option value="No, I don't know">No, I don't know</option>
+                </select>
+            </div>
+
+            <!-- Question 4 -->
+            <div>
+                <label for="q4">4. How often do  you update your passwords?</label>
+                <select id="q4" name="q4" required>
+                    <option value="">Select an answer</option>
+                    <option value="Monthly">Monthly</option>
+                    <option value="Every few months">Every few months</option>
+                    <option value="Once a year">Once a year</option>
+                    <option value="Never">Never</option>
+                </select>
+            </div>
+
+
+            <!-- Question 5 -->
+            <div>
+                <label for="q5">5. Do you use the same password for multiple accounts?</label>
+                <select id="q5" name="q5" required>
+                    <option value="">Select an answer</option>
+                    <option value="Yes, for most accounts">Yes, for most accounts</option>
+                    <option value="Yes, but only a few accounts">Yes, but only a few accounts</option>
+                    <option value="No, I use different passwords for all accounts">No, I use different passwords for all accounts</option>
+
+                </select>
+            </div>
+
+            <!-- Question 6 -->
+            <div>
+                <label for="q6">6. Do you use any form of two factor authentication(2FA) for your accounts?</label>
+                <select id="q6" name="q6" required>
+                    <option value="">Select an answer</option>
+                    <option value="Yes, for all accounts">Yes, for all accounts</option>
+                    <option value="Yes, but for some accounts">Yes, but for some accounts</option>
+                    <option value="No">No</option>
+                </select>
+            </div>
+
+             <!-- Question 7 -->
+            <div>
+                <label for="q7">7. If you receive an email from an unknown sender with an attachment, what would you do?</label>
+                <select id="q7" name="q7" required>
+                    <option value="">Select an answer</option>
+                    <option value="Open the attachment to see what it is">Open the attachment to see what it is</option>
+                    <option value="Delete the email immediately">Delete the email immediately</option>
+                    <option value="Scan the attachment with antivirus software before opening">Scan the attachment with antivirus software before opening</option>
+                    <option value="Report it as spam/phishing">Report it as spam/phishing</option>
+                </select>
+            </div>
+
+           <!-- Question 8-->
+            <div>
+                <label for="q8">8. Have you ever experienced a cybersecurity incident (eg account been hacked, data breach)?</label>
+                <select id="q8" name="q8" required>
+                    <option value="">Select an answer</option>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+
+                </select>
+            </div>
+
+            <!-- Question 9-->
+            <div>
+                <label for="q9">9. If yes, how did you respond to the incident?</label>
+                <select id="q9" name="q9" required>
+
+                    <option value="">Select an answer</option>
+                    <option value="Changed passwords">Changed passwords</option>
+                    <option value="Contacted the service provider">Contacted the service provider</option>
+                    <option value="Did nothing">Did nothing</option>
+                    <option value="Reported it to the relevant authorities">Reported it to the relevant authorities</option>
+
+                </select>
+            </div>
+
+          <!-- Question 10-->
+            <div>
+                <label for="q10">10. You receive a message from your bank asking you to update your account information via a link provided in the email. what would you  do ?</label>
+
+                <select id="q10" name="q10" required>
+                    <option value="">Select an answer</option>
+                    <option value="Click the link and update your information">Click the link and update your information</option>
+                    <option value="Ignore the email">Ignore the email</option>
+                    <option value="Contact the bank directly to verify the email">Contact the bank directly to verify the email</option>
+                    <option value="Mark the email as spam">Mark the email as spam</option>
+
+                </select>
+            </div>
+
+
+             <!-- Question 11 Fix -->
+            <div>
+                <label for="q11">11. While browsing, you encounter a pop-up message claiming your computer is infected and you need to download software to fix it. What action would you take?</label>
+                <select id="q11" name="q11" required>
+                    <option value="">Select an answer</option>
+                    <option value="Download and install the software immediately">Download and install the software immediately</option>
+                    <option value="Close the pop-up and continue browsing">Close the pop-up and continue browsing</option>
+                    <option value="Run your antivirus software to check for issues">Run your antivirus software to check for issues</option>
+                    <option value="Restart your computer">Restart your computer</option>
+                </select>
+            </div>
+
+
+
+             <!-- Question 12 Fix -->
+            <div>
+                <label for="q12">12. How important do you believe cybersecurity is for protecting your personal information?</label>
+                <select id="q12" name="q12" required>
+                    <option value="">Select an answer</option>
+                    <option value="Extremely important">Extremely important</option>
+                    <option value="Very important">Very important</option>
+                    <option value="Somewhat important">Somewhat important</option>
+                    <option value="Not important">Not important</option>
+                </select>
+            </div>
+
+
+
+             <!-- Question 13 Fix -->
+            <div>
+                <label for="q13">13. How confident are you in your ability to protect your personal data online?</label>
+                <select id="q13" name="q13" required>
+                    <option value="">Select an answer</option>
+                    <option value="Very confident">Very confident</option>
+                    <option value="Somewhat confident">Somewhat confident</option>
+                    <option value="Not very confident">Not very confident</option>
+                    <option value="Not confident at all">Not confident at all</option>
+                </select>
+            </div>
+
+
+             <!-- Question 14 Fix -->
+            <div>
+                <label for="q14">14. Would you be interested in receiving further training on cybersecurity?</label>
+                <select id="q14" name="q14" required>
+                    <option value="">Select an answer</option>
+                    <option value="Yes">Yes</option>
+                    <option value="Maybe">Maybe</option>
+                    <option value="No">No</option>
+                </select>
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <!-- Predict Button -->
+            <button type="submit">Predict</button>
+        </form>
+    </main>
+</body>
+</html>

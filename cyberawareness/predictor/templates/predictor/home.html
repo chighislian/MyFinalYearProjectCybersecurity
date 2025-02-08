@@ -1,0 +1,134 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cybersecurity Awareness</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('/static/img/senate-building.png');
+            background-size: cover;
+            background-position: center;
+            color: #fff;
+            text-align: center;
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.7);
+        }
+        .logo img {
+            max-height: 60px;
+        }
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 18px;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        .hero {
+            padding: 100px 20px;
+            background: rgba(0, 0, 0, 0.5);
+        }
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 10px;
+        }
+        .hero h2 {
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 40px;
+        }
+        .hero button {
+            font-size: 20px;
+            padding: 10px 20px;
+            border: none;
+            background: #007BFF;
+            color: #fff;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .hero button:hover {
+            background: #0056b3;
+        }
+        footer {
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            text-align: center;
+        }
+        footer h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        footer p {
+            font-size: 16px;
+            margin: 10px 0;
+        }
+        footer a {
+            color: #007BFF;
+            text-decoration: none;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+        .copyright {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #ccc;
+        }
+    </style>
+</head>
+<body >
+
+    <header>
+        <div class="logo">
+            <img src="{% static 'img/20240712_134039-e1720788915297.png' %}" alt="Logo">
+
+        </div>
+        <nav>
+            <a href="#about">About Us</a>
+            <a href="#contact">Contact Us</a>
+        </nav>
+    </header>
+
+    <div class="hero">
+        <h1>Welcome to  Federal University of Technology Owerri Cybersecurity Awareness Hub!</h1>
+
+        <p>Check your cybersecurity awareness level and learn how to stay safe online.</p>
+        <button onclick="window.location.href='{% url 'predict' %}'">Start</button>
+    </div>
+
+    <footer>
+        <section id="about">
+            <h2>About Us</h2>
+            <p>
+                At FUTO, we prioritize equipping students like you with the knowledge to stay safe online and protect your digital footprint. Through interactive surveys and tailored resources, you’ll gain valuable insights into your cybersecurity awareness level and learn practical steps to improve your digital safety.
+                Let’s work together to build a community of tech-savvy, cyber-aware individuals prepared to tackle the challenges of the online world.
+                Take the first step today start your assessment and discover your cybersecurity strength!
+            </p>
+        </section>
+        <section id="contact">
+            <h2>Contact Us</h2>
+            <p>Email: <a href="mailto:cybersecurityhub@futo.edu.ng">cybersecurityhub@futo.edu.ng</a></p>
+            <p>Phone: +2348067153799</p>
+            <p>Address: Federal University of Technology, Owerri, Nigeria</p>
+        </section>
+        <div class="copyright">
+            &copy; 2025 Federal University of Technology, Owerri. All rights reserved.
+        </div>
+    </footer>
+
+</body>
+</html>
