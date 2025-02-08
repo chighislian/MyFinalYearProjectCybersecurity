@@ -74,20 +74,35 @@ def predict(request):
             prediction = model.predict(input_array)[0]
             print("🔍 Raw Prediction from Model:", prediction)
 
-            # Handle predictions correctly
-            if isinstance(prediction, str):
-                awareness_level = prediction  # "High Awareness", etc.
-                score = (sum(input_data) / (10 * len(input_data))) * 100  # Normalize score
+            # Check if prediction is numeric or string
+            try:
+                prediction = float(prediction)  # Convert model output to float
+                is_numeric = True
+            except ValueError:
+                is_numeric = False
+
+            if is_numeric:
+                # Model returned a numeric prediction
+                score = round(prediction, 2)  # Use the model's numeric output as the score
+
+                # Assign awareness level based on score
+                if prediction >= 70:
+                    awareness_level = "High Awareness"
+                elif 40 <= prediction < 70:
+                    awareness_level = "Medium Awareness"
+                else:
+                    awareness_level = "Low Awareness"
+
             else:
-                prediction = float(prediction)
-                awareness_level = "High Awareness" if prediction >= 70 else "Low Awareness"
-                score = round(prediction, 2)
+                # Model returned a category label like "High Awareness"
+                awareness_level = prediction  # Directly use model's output
+                score = (sum(input_data) / (10 * len(input_data))) * 100  # Normalize score for consistency
 
             print(f"✅ Storing in session: Level={awareness_level}, Score={score}%")
 
             # Store in session
             request.session["awareness_level"] = awareness_level
-            request.session["score"] = round(score, 2)
+            request.session["score"] = round(score, 2) if score is not None else "N/A"
 
             print("✅ Redirecting to result page...")
             return redirect("result")
@@ -97,8 +112,6 @@ def predict(request):
             return HttpResponse(f"❌ Error: {e}")
 
     return render(request, "predictor/predict.html")
-
-
 
 
 
